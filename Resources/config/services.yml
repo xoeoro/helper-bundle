@@ -1,10 +1,11 @@
 services:
     xoeoro.helper:
         class: Xoeoro\HelperBundle\Service\HelperService
-        scope: request
+        # scope: request
         calls:
             - [setTemplating, ["@templating"]]
-            - [setRequest, ["@request"]]
+            - [enterRequestScope, ["@service_container"]]
+            # - [setRequest, ["@request"]]
             - [setSecurityContext, ["@security.context"]]
             - [setRouter, ["@router"]]
             - [setParameterBag, ["@=service('service_container').getParameterBag()"]]
