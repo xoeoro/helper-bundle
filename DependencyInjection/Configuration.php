@@ -18,17 +18,19 @@ class Configuration implements ConfigurationInterface
         $rootNode = $treeBuilder->root('xoeoro_helper');
 
         $rootNode
-            ->children()->arrayNode('placeholder')
-            	->children()->arrayNode('public')
-            		->children()
-                        ->scalarNode('path')->defaultValue('uploads/media')->end()
-                    ->end()
-            	->end()
-            	->children()->arrayNode('upload')
-            		->children()
-                        ->scalarNode('path')->defaultValue('%kernel.root_dir%/../web/%xoeoro.placeholder.public.path%')->end()
-                    ->end()
-            	->end()
+            ->children()
+            	->arrayNode('placeholder')->children()
+	            	->arrayNode('public')
+	            		->children()
+	                        ->scalarNode('path')->defaultValue('uploads/media')->end()
+	                    ->end()
+	            	->end()
+	            	->arrayNode('upload')
+	            		->children()
+	                        ->scalarNode('path')->defaultValue('%kernel.root_dir%/../web/%xoeoro.placeholder.public.path%')->end()
+	                    ->end()
+	            	->end()
+	            ->end()
             ->end()
         ;
 
